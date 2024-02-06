@@ -17,7 +17,7 @@ class TextStyleManager {
   }
   static getSmallWhiteTextStyle(){
     return GoogleFonts.montserrat(
-      fontSize: 12.sp,
+      fontSize: 8.sp,
       color: Colors.white,
       fontStyle: FontStyle.normal,
       fontWeight: FontWeight.normal,
