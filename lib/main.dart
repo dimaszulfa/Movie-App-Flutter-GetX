@@ -192,7 +192,7 @@ class _MovieScreenState extends State<MovieScreen> {
               //         width: width * 0.2,
               //         text: "Peaky blinders",
               //       ),
-
+          
               //     ],
               //   ),
               // ),
@@ -284,15 +284,15 @@ class MovieCarouselItems extends StatelessWidget {
             children: [
               CustomChipButton(
                 width: width * 0.1,
-                text: "Peaky blinders",
+                text: "Genres",
               ),
               CustomChipButton(
                 width: width * 0.1,
-                text: "Peaky blinders",
+                text: "Genres",
               ),
               CustomChipButton(
                 width: width * 0.1,
-                text: "Peaky blinders",
+                text: "Genres",
               ),
             ],
           ),
