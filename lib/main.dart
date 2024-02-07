@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -5,6 +6,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:movie_getx/detail_by_genre_screen.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:sizer/sizer.dart';
+
 import 'package:movie_getx/app.dart';
 import 'package:movie_getx/constants/asset_image_manager.dart';
 import 'package:movie_getx/constants/color_manager.dart';
@@ -12,8 +17,7 @@ import 'package:movie_getx/constants/text_style_manager.dart';
 import 'package:movie_getx/constants/theme_manager.dart';
 import 'package:movie_getx/constants/values_manager.dart';
 import 'package:movie_getx/controllers/controller.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:sizer/sizer.dart';
+import 'package:movie_getx/routes/routes.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -22,6 +26,8 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  static const route = '/';
 
   // This widget is the root of your application.
   @override
@@ -33,6 +39,8 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeManager.lightTheme,
         darkTheme: ThemeManager.lightTheme,
+        initialRoute: MyApp.route,
+        getPages: Routes.generateRoutes(),
         home: DefaultTabController(
             length: 2,
             child: Scaffold(
@@ -161,6 +169,10 @@ class _MovieScreenState extends State<MovieScreen> {
                         itemCount: 10,
                         itemBuilder: (context, index) {
                           return CustomChipButton(
+                            onTap: (){
+                              Get.toNamed(DetailByGenreScreen.route, arguments:  c.genreList["genres"][index]);
+                              print("clicked");
+                            },
                             width: width * 0.2,
                             text: c.genreList["genres"][index]["name"],
                           );
@@ -311,21 +323,26 @@ class MovieCarouselItems extends StatelessWidget {
 }
 
 class CustomChipButton extends StatelessWidget {
-  const CustomChipButton({
-    super.key,
+  CustomChipButton({
+    Key? key,
     required this.width,
     required this.text,
-  });
+    this.isClidked = true,
+    this.onTap
+
+  }) : super(key: key);
 
   final double width;
   final String text;
+  bool isClidked;
+  Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     final Controller c = Get.find();
 
     return GestureDetector(
-      onTap: () => print(c.obj),
+      onTap: (isClidked) ? onTap : null,
       child: Container(
         width: width,
         padding: EdgeInsets.all(width * 0.01),
