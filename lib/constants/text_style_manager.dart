@@ -7,6 +7,25 @@ enum fontSizeManager {
 }
 
 class TextStyleManager {
+  static getBoldBlackTextStyle(){
+    return GoogleFonts.montserrat(
+      fontSize: 14.sp,
+      color: Colors.black,
+      fontStyle: FontStyle.normal,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+    static getSmallBlackTextStyle(){
+    return GoogleFonts.montserrat(
+      fontSize: 8.sp,
+      color: Colors.black,
+      fontStyle: FontStyle.normal,
+      fontWeight: FontWeight.normal,
+      
+    );
+  }
+
   static getNormalWhiteTextStyle(){
     return GoogleFonts.montserrat(
       fontSize: 14.sp,
