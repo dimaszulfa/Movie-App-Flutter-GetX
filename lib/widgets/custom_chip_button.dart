@@ -3,7 +3,7 @@ import 'package:movie_getx/constants/color_manager.dart';
 import 'package:movie_getx/constants/text_style_manager.dart';
 
 class CustomChipButton extends StatelessWidget {
-  CustomChipButton({
+  const CustomChipButton({
     Key? key,
     required this.width,
     required this.text,
@@ -14,8 +14,8 @@ class CustomChipButton extends StatelessWidget {
 
   final double width;
   final String text;
-  bool isClidked;
-  Function()? onTap;
+  final bool isClidked;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
