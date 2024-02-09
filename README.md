@@ -1,7 +1,7 @@
 # movie_getx
 [![Codemagic build status](https://api.codemagic.io/apps/65c22a70e9772bdc02fc4422/65c22a70e9772bdc02fc4421/status_badge.svg)](https://codemagic.io/apps/65c22a70e9772bdc02fc4422/65c22a70e9772bdc02fc4421/latest_build)
 
-#Installation
+## Installation
 
 1. clone this project
 ```
