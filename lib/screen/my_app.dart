@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_getx/constants/color_manager.dart';
 import 'package:movie_getx/constants/theme_manager.dart';
-import 'package:movie_getx/controllers/controller.dart';
 import 'package:movie_getx/routes/routes.dart';
 import 'package:movie_getx/screen/movie_screen.dart';
 import 'package:movie_getx/screen/tv/tv_screen.dart';
@@ -16,7 +15,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final Controller c = Get.put(Controller());
 
     return Sizer(builder: (context, orientation, deviceType) {
       return GetMaterialApp(

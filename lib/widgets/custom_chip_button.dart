@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:movie_getx/constants/color_manager.dart';
 import 'package:movie_getx/constants/text_style_manager.dart';
-import 'package:movie_getx/controllers/controller.dart';
 
 class CustomChipButton extends StatelessWidget {
   CustomChipButton({
@@ -21,7 +19,6 @@ class CustomChipButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Controller c = Get.find();
 
     return GestureDetector(
       onTap: (isClidked) ? onTap : null,

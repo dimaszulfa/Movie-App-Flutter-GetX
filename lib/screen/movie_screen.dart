@@ -35,7 +35,6 @@ class _MovieScreenState extends State<MovieScreen> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
     var randomed = Random().nextInt(10);
 
     return Obx(
