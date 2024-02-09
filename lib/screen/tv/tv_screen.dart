@@ -36,7 +36,6 @@ class _TvScreenState extends State<TvScreen> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
     var randomed = Random().nextInt(10);
 
     return Obx(
@@ -80,7 +79,7 @@ class _TvScreenState extends State<TvScreen> {
                                   image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
-                                          AssetImageManager.assetNetworkUrl + widget.c.listTvData["results"][randomed]["backdrop_path"]))),
+                                          AssetImageManager.assetNetworkUrl + widget.c.listTvData["results"][randomed]["poster_path"]))),
                             ),
                             Positioned(
                                 left: 10,
