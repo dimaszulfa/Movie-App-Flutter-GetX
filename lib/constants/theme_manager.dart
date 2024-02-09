@@ -26,13 +26,13 @@ class ThemeManager{
       centerTitle: true,
       backgroundColor: ColorManager.primaryColor,
       scrolledUnderElevation: 0,
-      titleTextStyle: TextStyle(
+      titleTextStyle: const TextStyle(
         fontWeight: FontWeight.w500,
         color: Colors.black,
         fontSize: 23,
       ),
       iconTheme: IconThemeData(color: ColorManager.primaryColor),
-      systemOverlayStyle: SystemUiOverlayStyle(
+      systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarColor: Colors.white,
         statusBarIconBrightness: Brightness.dark
       ),

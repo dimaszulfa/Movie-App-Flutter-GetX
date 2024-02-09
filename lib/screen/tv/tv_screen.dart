@@ -9,7 +9,6 @@ import 'package:movie_getx/constants/text_style_manager.dart';
 import 'package:movie_getx/constants/values_manager.dart';
 import 'package:movie_getx/controllers/tv_controller.dart';
 import 'package:movie_getx/detail_by_genre_screen.dart';
-import 'package:movie_getx/screen/movie_carousel_items.dart';
 import 'package:movie_getx/screen/tv/tv_carousel_items.dart';
 import 'package:movie_getx/widgets/custom_chip_button.dart';
 import 'package:shimmer/shimmer.dart';
@@ -43,7 +42,7 @@ class _TvScreenState extends State<TvScreen> {
     return Obx(
       () => Scaffold(
         body: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
               vertical: AppPadding.size32, horizontal: AppPadding.size16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +61,7 @@ class _TvScreenState extends State<TvScreen> {
                         width: width * 1,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.sp),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
                                     "assets/images/peaky_blinders_header.jpg"))),
@@ -81,7 +80,7 @@ class _TvScreenState extends State<TvScreen> {
                                   image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
-                                          "${AssetImageManager.assetNetworkUrl + widget.c.listTvData["results"][randomed]["backdrop_path"]}"))),
+                                          AssetImageManager.assetNetworkUrl + widget.c.listTvData["results"][randomed]["backdrop_path"]))),
                             ),
                             Positioned(
                                 left: 10,
@@ -97,7 +96,9 @@ class _TvScreenState extends State<TvScreen> {
               ),
               (widget.c.genreList.isEmpty)
                   ? Shimmer.fromColors(
-                      child: Container(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: SizedBox(
                         height: 2.h,
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
@@ -109,10 +110,8 @@ class _TvScreenState extends State<TvScreen> {
                                 text: "Peaky blinders",
                               );
                             }),
-                      ),
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!)
-                  : Container(
+                      ))
+                  : SizedBox(
                       height: 2.h,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,

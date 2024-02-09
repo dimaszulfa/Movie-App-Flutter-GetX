@@ -10,7 +10,6 @@ import 'package:movie_getx/controllers/tv_controller.dart';
 import 'package:movie_getx/screen/movie_detail_item.dart';
 import 'package:movie_getx/screen/tv/tv_detail_item.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sizer/sizer.dart';
 
 class DetailByGenreScreen extends StatefulWidget {
   DetailByGenreScreen({super.key});
@@ -55,29 +54,29 @@ class _DetailByGenreScreenState extends State<DetailByGenreScreen> {
 
     return Obx(()=>Scaffold(
       appBar: AppBar(
-        actions: [],
+        actions: const [],
         title: Text(
           "Genre ${arguments["id"]["name"]}",
           style: TextStyleManager.getNormalWhiteTextStyle(),
         ),
         leading: GestureDetector(
             onTap: () => Get.back(),
-            child: Icon(Icons.arrow_back, color: Colors.white)),
+            child: const Icon(Icons.arrow_back, color: Colors.white)),
       ),
       body:(arguments["type"] == "movie") ? (widget.c.listMoviesByGenre.isEmpty) ? SizedBox(
        child: Shimmer.fromColors(
         baseColor: Colors.grey[300]!,
         highlightColor: Colors.grey[100]!,
          child: GridView.builder(
-            padding: EdgeInsets.symmetric(vertical: AppPadding.size8),
+            padding: const EdgeInsets.symmetric(vertical: AppPadding.size8),
               itemCount: 20,
               cacheExtent: 9999,
               gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                  const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemBuilder: (context, int) {
                 return Container(
-                  margin: EdgeInsets.symmetric(horizontal: AppPadding.size4, vertical: AppPadding.size8),
-                  decoration: BoxDecoration(
+                  margin: const EdgeInsets.symmetric(horizontal: AppPadding.size4, vertical: AppPadding.size8),
+                  decoration: const BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.cover,
                           image: AssetImage(
@@ -86,10 +85,10 @@ class _DetailByGenreScreenState extends State<DetailByGenreScreen> {
               }),
        ),      ) :  Container(
         child: GridView.builder(
-          padding: EdgeInsets.symmetric(vertical: AppPadding.size8),
+          padding: const EdgeInsets.symmetric(vertical: AppPadding.size8),
             itemCount: 20,
             gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemBuilder: (context, int) {
               return GestureDetector(
                 onTap: (){
@@ -105,21 +104,21 @@ class _DetailByGenreScreenState extends State<DetailByGenreScreen> {
               }
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: AppPadding.size8, horizontal: AppPadding.size8),
+                  padding: const EdgeInsets.symmetric(vertical: AppPadding.size8, horizontal: AppPadding.size8),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(AppSize.size16),
                     child: CachedNetworkImage(
                       memCacheHeight: 1000,
                       memCacheWidth: 1000,
-                      imageUrl: "${AssetImageManager.assetNetworkUrl + widget.c.listMoviesByGenre["results"][int]["poster_path"]}",
+                      imageUrl: AssetImageManager.assetNetworkUrl + widget.c.listMoviesByGenre["results"][int]["poster_path"],
                     placeholder: (context, url) => SizedBox(
-                      child: Shimmer.fromColors(child: Container(
-                        decoration: BoxDecoration(
+                      child: Shimmer.fromColors(baseColor: ColorManager.primaryColor, highlightColor: ColorManager.primaryContainer, child: Container(
+                        decoration: const BoxDecoration(
                           image: DecorationImage(fit: BoxFit.cover,image: AssetImage("assets/images/peaky_blinders_header.jpg"))
                         ),
-                      ), baseColor: ColorManager.primaryColor, highlightColor: ColorManager.primaryContainer),
+                      )),
                     ),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                     fit: BoxFit.cover,
                     
                     ),
@@ -142,15 +141,15 @@ class _DetailByGenreScreenState extends State<DetailByGenreScreen> {
         baseColor: Colors.grey[300]!,
         highlightColor: Colors.grey[100]!,
          child: GridView.builder(
-            padding: EdgeInsets.symmetric(vertical: AppPadding.size8),
+            padding: const EdgeInsets.symmetric(vertical: AppPadding.size8),
               itemCount: 20,
               cacheExtent: 9999,
               gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                  const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemBuilder: (context, int) {
                 return Container(
-                  margin: EdgeInsets.symmetric(horizontal: AppPadding.size4, vertical: AppPadding.size8),
-                  decoration: BoxDecoration(
+                  margin: const EdgeInsets.symmetric(horizontal: AppPadding.size4, vertical: AppPadding.size8),
+                  decoration: const BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.cover,
                           image: AssetImage(
@@ -159,10 +158,10 @@ class _DetailByGenreScreenState extends State<DetailByGenreScreen> {
               }),
        ),      ) :  Container(
         child: GridView.builder(
-          padding: EdgeInsets.symmetric(vertical: AppPadding.size8),
+          padding: const EdgeInsets.symmetric(vertical: AppPadding.size8),
             itemCount: 20,
             gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemBuilder: (context, int) {
               return GestureDetector(
                 onTap: (){
@@ -178,21 +177,21 @@ class _DetailByGenreScreenState extends State<DetailByGenreScreen> {
               }
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: AppPadding.size8, horizontal: AppPadding.size8),
+                  padding: const EdgeInsets.symmetric(vertical: AppPadding.size8, horizontal: AppPadding.size8),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(AppSize.size16),
                     child: CachedNetworkImage(
                       memCacheHeight: 1000,
                       memCacheWidth: 1000,
-                      imageUrl: "${AssetImageManager.assetNetworkUrl + widget.cTv.listTvByGenre["results"][int]["poster_path"]}",
+                      imageUrl: AssetImageManager.assetNetworkUrl + widget.cTv.listTvByGenre["results"][int]["poster_path"],
                     placeholder: (context, url) => SizedBox(
-                      child: Shimmer.fromColors(child: Container(
-                        decoration: BoxDecoration(
+                      child: Shimmer.fromColors(baseColor: ColorManager.primaryColor, highlightColor: ColorManager.primaryContainer, child: Container(
+                        decoration: const BoxDecoration(
                           image: DecorationImage(fit: BoxFit.cover,image: AssetImage("assets/images/peaky_blinders_header.jpg"))
                         ),
-                      ), baseColor: ColorManager.primaryColor, highlightColor: ColorManager.primaryContainer),
+                      )),
                     ),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                     fit: BoxFit.cover,
                     
                     ),

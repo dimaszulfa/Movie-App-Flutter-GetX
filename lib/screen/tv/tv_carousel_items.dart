@@ -2,10 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_getx/constants/asset_image_manager.dart';
-import 'package:movie_getx/constants/color_manager.dart';
-import 'package:movie_getx/controllers/controller.dart';
 import 'package:movie_getx/controllers/tv_controller.dart';
-import 'package:movie_getx/screen/movie_detail_item.dart';
 import 'package:movie_getx/screen/tv/tv_detail_item.dart';
 import 'package:movie_getx/widgets/custom_chip_button.dart';
 import 'package:shimmer/shimmer.dart';
@@ -51,18 +48,18 @@ class TvCarouselItems extends StatelessWidget {
                 child: Container(
                   width: 200.0,
                   height: 100.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(image: AssetImage("assets/images/peaky_blinders_header.jpg"))
                   ),
                 )
               ),
             ) : CachedNetworkImage(
-                  imageUrl: "${AssetImageManager.assetNetworkUrl + c.listTvData["results"][index]["poster_path"]}",
+                  imageUrl: AssetImageManager.assetNetworkUrl + c.listTvData["results"][index]["poster_path"],
                   placeholder: (context, url) {
-                    return Shimmer.fromColors(child: Container(), baseColor: Colors.grey[300]!, highlightColor: Colors.grey[100]!);
+                    return Shimmer.fromColors(baseColor: Colors.grey[300]!, highlightColor: Colors.grey[100]!, child: Container());
                   },
                   errorWidget: (context, url, error) =>
-                      Icon(Icons.error),
+                      const Icon(Icons.error),
                   imageBuilder: (context, imageProvider) {
                     return InkWell(
                     borderRadius: BorderRadius.circular(18),
@@ -87,7 +84,7 @@ class TvCarouselItems extends StatelessWidget {
           child: Shimmer.fromColors(
             baseColor: Colors.grey[300]!,
             highlightColor: Colors.grey[100]!,
-            child: Container(
+            child: SizedBox(
               height: 2.5.h,
               child: ListView.builder(
                 shrinkWrap: true,
@@ -103,7 +100,7 @@ class TvCarouselItems extends StatelessWidget {
               },),
             ),
           ),
-        ):Container(
+        ):SizedBox(
           height: 2.5.h,
           child: ListView.builder(
             shrinkWrap: true,

@@ -9,7 +9,6 @@ import 'package:movie_getx/constants/text_style_manager.dart';
 import 'package:movie_getx/constants/values_manager.dart';
 import 'package:movie_getx/controllers/controller.dart';
 import 'package:movie_getx/detail_by_genre_screen.dart';
-import 'package:movie_getx/main.dart';
 import 'package:movie_getx/screen/movie_carousel_items.dart';
 import 'package:movie_getx/widgets/custom_chip_button.dart';
 import 'package:shimmer/shimmer.dart';
@@ -42,7 +41,7 @@ class _MovieScreenState extends State<MovieScreen> {
     return Obx(
       () => Scaffold(
         body: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
               vertical: AppPadding.size32, horizontal: AppPadding.size16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +60,7 @@ class _MovieScreenState extends State<MovieScreen> {
                         width: width * 1,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.sp),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
                                     "assets/images/peaky_blinders_header.jpg"))),
@@ -80,7 +79,7 @@ class _MovieScreenState extends State<MovieScreen> {
                                   image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
-                                          "${AssetImageManager.assetNetworkUrl + c.obj["results"][randomed]["backdrop_path"]}"))),
+                                          AssetImageManager.assetNetworkUrl + c.obj["results"][randomed]["backdrop_path"]))),
                             ),
                             Positioned(
                                 left: 10,
@@ -96,7 +95,9 @@ class _MovieScreenState extends State<MovieScreen> {
               ),
               (c.genreList.isEmpty)
                   ? Shimmer.fromColors(
-                      child: Container(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: SizedBox(
                         height: 2.h,
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
@@ -108,10 +109,8 @@ class _MovieScreenState extends State<MovieScreen> {
                                 text: "Peaky blinders",
                               );
                             }),
-                      ),
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!)
-                  : Container(
+                      ))
+                  : SizedBox(
                       height: 2.h,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:movie_getx/constants/asset_image_manager.dart';
 import 'package:movie_getx/constants/color_manager.dart';
 import 'package:movie_getx/constants/text_style_manager.dart';
@@ -10,7 +9,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 class MovieDetailitem extends StatefulWidget {
-  MovieDetailitem({super.key});
+  const MovieDetailitem({super.key});
 
   static const String route = "/movie-detail-item";
   @override
@@ -39,16 +38,16 @@ class _MovieDetailitemState extends State<MovieDetailitem> {
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
         appBar: AppBar(
-          actions: [],
+          actions: const [],
           title: Text(
             "Detail Movie",
             style: TextStyleManager.getNormalWhiteTextStyle(),
           ),
           leading: GestureDetector(
               onTap: () => Get.back(),
-              child: Icon(Icons.arrow_back, color: Colors.white)),
+              child: const Icon(Icons.arrow_back, color: Colors.white)),
         ),
-        body: (c.movieDetail.isEmpty) ? Center(child: CircularProgressIndicator(),) :SingleChildScrollView(
+        body: (c.movieDetail.isEmpty) ? const Center(child: CircularProgressIndicator(),) :SingleChildScrollView(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +64,7 @@ class _MovieDetailitemState extends State<MovieDetailitem> {
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(2.h),
                                 bottomRight: Radius.circular(2.h)),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 fit: BoxFit.fitWidth,
                                 image: AssetImage(
                                     "assets/images/peaky_blinders_header.jpg"))),
@@ -89,7 +88,7 @@ class _MovieDetailitemState extends State<MovieDetailitem> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
+                  SizedBox(
                           height: 2.5.h,
                           width: MediaQuery.of(context).size.width,
                           child: ListView.builder(
@@ -124,7 +123,7 @@ class _MovieDetailitemState extends State<MovieDetailitem> {
                           child: Shimmer.fromColors(
                             baseColor: Colors.grey[300]!,
                             highlightColor: ColorManager.primaryColor,
-                            child: Container(
+                            child: SizedBox(
                               height: 15.h,
                               width: MediaQuery.of(context).size.width,
                               child: ListView.builder(
@@ -141,7 +140,7 @@ class _MovieDetailitemState extends State<MovieDetailitem> {
                                     decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(2.h),
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                             fit: BoxFit.cover,
                                             image: AssetImage(
                                                 "assets/images/peaky_blinders_header.jpg"))),
@@ -151,7 +150,7 @@ class _MovieDetailitemState extends State<MovieDetailitem> {
                             ),
                           ),
                         )
-                      : Container(
+                      : SizedBox(
                           height: 15.h,
                           width: MediaQuery.of(context).size.width,
                           child: ListView.builder(
@@ -160,7 +159,7 @@ class _MovieDetailitemState extends State<MovieDetailitem> {
                                     .length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              return (c.movieDetail["production_companies"][index]["logo_path"] == null )? SizedBox.shrink():Container(
+                              return (c.movieDetail["production_companies"][index]["logo_path"] == null )? const SizedBox.shrink():Container(
                                 margin: EdgeInsets.only(right: 2.h),
                                 height: 200,
                                 width: 100,

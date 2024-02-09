@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Controller extends GetxController {
@@ -17,9 +16,9 @@ class Controller extends GetxController {
       "Content-Type": "application/json"
     };
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     var response = await Dio().get(
-      "https://api.themoviedb.org/3/discover/movie?api_key=${token}",
+      "https://api.themoviedb.org/3/discover/movie?api_key=$token",
       options: Options(
         headers: header,
       ),
@@ -29,15 +28,15 @@ class Controller extends GetxController {
     print(response.data);
   }
 
-  getMovieDetail(movie_id) async {
+  getMovieDetail(movieId) async {
     var header = {
       "Authorization": "Bearer $token",
       "Content-Type": "application/json"
     };
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     var response = await Dio().get(
-      "https://api.themoviedb.org/3/movie/${movie_id}?api_key=${token}",
+      "https://api.themoviedb.org/3/movie/$movieId?api_key=$token",
       options: Options(
         headers: header,
       ),
@@ -53,10 +52,10 @@ class Controller extends GetxController {
       "accept": "application/json"
     };
 
-    print("https://api.themoviedb.org/3/discover/movie?with_genres=${id}?api_key=${token}");
+    print("https://api.themoviedb.org/3/discover/movie?with_genres=$id?api_key=$token");
 
     return await Dio().get(
-      "https://api.themoviedb.org/3/discover/movie?api_key=${token}",
+      "https://api.themoviedb.org/3/discover/movie?api_key=$token",
       queryParameters: {
         "with_genres": id
       },
@@ -78,10 +77,10 @@ class Controller extends GetxController {
       "Content-Type": "application/json",
     };
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
 
     var response = await Dio().get(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=${token}",
+        "https://api.themoviedb.org/3/genre/movie/list?api_key=$token",
         options: Options(headers: header));
 
     genreList.addAll(response.data);

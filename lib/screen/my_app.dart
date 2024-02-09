@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:movie_getx/constants/color_manager.dart';
 import 'package:movie_getx/constants/theme_manager.dart';
 import 'package:movie_getx/controllers/controller.dart';
-import 'package:movie_getx/main.dart';
 import 'package:movie_getx/routes/routes.dart';
 import 'package:movie_getx/screen/movie_screen.dart';
 import 'package:movie_getx/screen/tv/tv_screen.dart';
@@ -35,18 +33,18 @@ class MyApp extends StatelessWidget {
                 bottom: TabBar(
                     labelColor: ColorManager.secondaryContainer,
                     unselectedLabelColor: ColorManager.secondaryColor,
-                    tabs: [
+                    tabs: const [
                       Tab(
-                        child: Text("Movie"),
                         icon: Icon(Icons.movie),
+                        child: Text("Movie"),
                       ),
                       Tab(
-                        child: Text("TV"),
                         icon: Icon(Icons.tv),
+                        child: Text("TV"),
                       ),
                     ]),
               ),
-              body: TabBarView(children: [MovieScreen(), TvScreen()]),
+              body: TabBarView(children: [const MovieScreen(), TvScreen()]),
             )),
       );
     });

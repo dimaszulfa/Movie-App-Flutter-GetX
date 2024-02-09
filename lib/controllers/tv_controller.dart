@@ -14,7 +14,7 @@ class TvController extends GetxController{
   getListTvData() async {
 
     var response = await Dio().get(
-      "https://api.themoviedb.org/3/discover/tv?api_key=${token}",
+      "https://api.themoviedb.org/3/discover/tv?api_key=$token",
     );
 
     print(response.data);
@@ -27,25 +27,25 @@ class TvController extends GetxController{
       "Content-Type": "application/json",
     };
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
 
     var response = await Dio().get(
-        "https://api.themoviedb.org/3/genre/tv/list?api_key=${token}",
+        "https://api.themoviedb.org/3/genre/tv/list?api_key=$token",
         options: Options(headers: header));
 
     genreList.addAll(response.data);
     print(response.data);
   }
 
-   getTvDetail(tv_id) async {
+   getTvDetail(tvId) async {
     var header = {
       "Authorization": "Bearer $token",
       "Content-Type": "application/json"
     };
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     var response = await Dio().get(
-      "https://api.themoviedb.org/3/tv/${tv_id}?api_key=${token}",
+      "https://api.themoviedb.org/3/tv/$tvId?api_key=$token",
       options: Options(
         headers: header,
       ),
@@ -64,7 +64,7 @@ class TvController extends GetxController{
 
 
     return await Dio().get(
-      "https://api.themoviedb.org/3/discover/tv?api_key=${token}",
+      "https://api.themoviedb.org/3/discover/tv?api_key=$token",
       queryParameters: {
         "with_genres": id
       },
